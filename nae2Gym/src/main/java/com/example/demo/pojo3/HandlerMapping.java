@@ -35,7 +35,7 @@ public class HandlerMapping {
 			controller = new KakaoController();
 		}
 		
-		///////////////////////// [[ 게시판  시작 ]] /////////////////////////
+		///////////////////////// [[ 게시판  시작 ]] /////////////////////////  
 		else if("board2".equals(upmu[0])) {
 			controller = new Board2Controller();
 			if("boardList".equals(upmu[1])) {
