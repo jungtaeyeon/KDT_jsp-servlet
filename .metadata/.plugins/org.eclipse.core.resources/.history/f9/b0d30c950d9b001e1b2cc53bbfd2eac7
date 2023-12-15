@@ -1,0 +1,76 @@
+package com.example.demo.pojo3;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+
+// 인터페이스의 구현체 클래스 이므로 추상메소드를 모두 오버라이딩 해야 한다.
+public class Board2Controller implements Controller3 {
+	Logger logger = Logger.getLogger(Board2Controller.class);
+
+	@Override
+	public Object execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
+		return null;
+	}
+
+	@Override
+	public Object boardList(HttpServletRequest req, HttpServletResponse res) {
+		logger.info("boardList");
+		logger.info(req+", "+res);
+		return null;
+	}
+
+	@Override
+	public Object jsonBoardList(HttpServletRequest req, HttpServletResponse res) {
+
+		return null;
+	}
+
+	@Override
+	public Object boardDetail(HttpServletRequest req, HttpServletResponse res) {
+
+		return null;
+	}
+
+	@Override
+	public Object boardInset(HttpServletRequest req, HttpServletResponse res) {
+
+		return null;
+	}
+
+	@Override
+	public Object boardUpdate(HttpServletRequest req, HttpServletResponse res) {
+
+		return null;
+	}
+
+	@Override
+	public Object boardDelete(HttpServletRequest req, HttpServletResponse res) {
+
+		return null;
+	}
+
+	@Override
+	public Object imageDownload(HttpServletRequest req, HttpServletResponse res) {
+
+		return null;
+	}
+
+	@Override
+	public Object imageUpload(HttpServletRequest req, HttpServletResponse res) {
+
+		return null;
+	}
+
+	@Override
+	public Object imageGet(HttpServletRequest req, HttpServletResponse res) {
+
+		return null;
+	}
+
+}

@@ -1,0 +1,8 @@
+package com.example.demo.pojo3;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+@WebServlet("*.gd3")
+public class ActionSupport extends HttpServlet {
+
+}

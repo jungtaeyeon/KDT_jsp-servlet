@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.mybatis.mapper.BoardMapper">
+	<resultMap id="bVO" type="com.vo.BoardVO">
+	<id property="b_no" column="b_no"/>
+	<result property="b_title" column="b_title">
+	</resultMap>
+	<select id="proc_boardList" parameterType="map" statementType="CALLABLE">
+		{ call proc_boardList(#{key, jdbcType=CURSOR, mode=OUT, javaType=java.sql.ResultSet, resultMap=ntVO}) }
+	</select>
+	<insert id="boardInsert" parameterType="java.util.Map">
+		insert into board(b_no, b_title, b_content, b_writer, b_hit, b_date, b_file)
+		values(seq_board_no.nextval, #{b_title}, #{b_content}, #{b_writer}, 0, to_char(sysdate, 'YYYY-MM-DD HH24:MI:SS'), #{b_file})
+	</insert>
+	<update id="boardUpdate" parameterType="map">
+		update board
+		      set b_title = #{b_title}
+		          ,  b_content = #{b_content}
+		          ,  b_writer = #{b_writer}
+		  where b_no = #{b_no}
+	</update>
+	<delete id="boardDelete" parameterType="int">
+		delete from board where b_no = #{value}  	
+	</delete>
+<!-- 	<delete id="boardDelete" parameterType="map">
+		delete from board where b_no = #{b_no}  	
+	</delete> -->
+	<select id="boardList" parameterType="map" resultType = "map">
+		select b_no, b_title, b_writer, b_hit, NVL(b_file, '없음') b_file from board
+		<where>
+			<if test="b_no!=null">AND b_no=#{b_no}</if>
+			<if test="gubun!=null">
+				<choose> 
+					<when test='gubun.equals("b_title")'>
+						AND b_title LIKE '%'||#{keyword}||'%'
+					</when>
+					<when test='gubun.equals("b_content")'>
+						AND b_content LIKE '%'||#{keyword}||'%'
+					</when>
+					<when test='gubun.equals("b_writer")'>
+						AND b_writer LIKE '%'||#{keyword}||'%'
+					</when>
+				</choose>
+			</if>
+		</where>
+		order by b_no desc
+	</select> 
+</mapper>

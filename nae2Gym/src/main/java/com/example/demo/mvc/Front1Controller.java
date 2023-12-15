@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 
 
 //@WebServlet(urlPatterns= {"/auth", "/notice"})
-@WebServlet(urlPatterns= {"*.gd3"})
+@WebServlet(urlPatterns= {"*.pj3"})
 public class Front1Controller extends HttpServlet {
 	Logger logger = Logger.getLogger(Front1Controller.class);
 	private static final long serialVersionUID = 1L;

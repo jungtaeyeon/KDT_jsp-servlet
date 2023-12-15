@@ -1,0 +1,73 @@
+package com.example.demo.pojo3;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+
+import com.example.demo.pojo2.BoardController;
+import com.example.demo.pojo2.Controller;
+
+// url을 통해서 요청을 받으므로 그 값을 이용하여 메소드 이름을 결정 한다. - upmu.length=2
+@SuppressWarnings("serial")
+@WebServlet("*.gd3")
+public class ActionSupport extends HttpServlet {
+	Logger logger = Logger.getLogger(ActionSupport.class);
+	HandlerMapping hm = null;
+	
+	private void doService(HttpServletRequest req, HttpServletResponse res) {
+		String  uri = req.getRequestURI(); // => /notice/noticeInsert.gd?n_title=a&n_content=b
+		logger.info(uri);
+		String context = req.getContextPath();// /
+		logger.info(context);
+		String command = uri.substring(context.length()+1);//-> notice/noticeInsert.gd
+		logger.info(command);
+		//뒤에 의미없는 확장자 gd를 잘라내기
+		int end = command.lastIndexOf(".");//점이 있는 위치정보를 가져온다
+		logger.info(""+end);
+		command =  command.substring(0,end);//-> notice/noticeInsert까지만 가져온다. .gd는 빼고서....
+		logger.info(command);//-> notice/noticeList or notice/noticeInsert or notice/noticeUpdate or notice/noticeDelete
+		String upmu[] = null;
+		String result = null; // -> redirect:/board/boardInsert, forward:/board/boardList
+		upmu = command.split("/");
+		for(String name:upmu) {
+			// 단, 반드시 추상메소드를 먼저 설계할 것 !!!!! -> 이 약속이 지켜져야 컴파일 에러가 없다.
+			logger.info(name); // upmu[0] = board2  upmu[1] = boardList.jsp, boardList.gd3, boardInsert.gd3 ...
+		}
+		// 여기서 getController메소드를 호출
+		
+		
+		
+	}
+	
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		doService(req, res);
+	}
+
+
+	// 쿼리스트링으로 값을 넘길 때 - 링크, header, 제한적
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		doService(req, res);
+	}
+	
+	// body에 값을 넘길 때 - 서버인터셉트를 안당한다, 무조건 서버 전달, 제한이 없다 - 바이너리 타입도 담을 수 있다(첨부파일도 가능)
+	// 첨부파일을 담을때는 무조건 post방식 이여야 한다. - enctype="multipart/form-data" - 바이너리로 전달(문자+숫자의 조합) - 이미지 포함 가능
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		doService(req, res);
+	}
+	
+	// 수정
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		doService(req, res);
+	}
+}
+

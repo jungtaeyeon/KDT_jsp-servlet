@@ -1,0 +1,8 @@
+package com.example.demo.pojo3;
+
+import javax.servlet.http.HttpServletRequest;
+
+// -> select -> List:배열-로우 <Map:여러컬럼담기> -> jsp -> 유지 -> request -> 서블릿과 의존관계가 있다.
+public class ModelAndView {
+	HttpServletRequest req = null;
+}

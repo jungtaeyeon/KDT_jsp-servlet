@@ -1,0 +1,30 @@
+package com.example.demo.pojo3;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+// pojo1, pojo2와는 다르게 컨트롤 클래스부터 메소드를 쪼갠다
+// 메소드마다 req와 res를 주입 받을 수 있어야 한다.
+public interface Controller3 {
+	public Object execute(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException;
+	
+	// 게시판 구현메소드 추가
+	public Object boardList(HttpServletRequest req, HttpServletResponse res);
+	public Object jsonBoardList(HttpServletRequest req, HttpServletResponse res);
+	public Object boardDetail(HttpServletRequest req, HttpServletResponse res);
+	public Object boardInset(HttpServletRequest req, HttpServletResponse res);
+	public Object boardUpdate(HttpServletRequest req, HttpServletResponse res);
+	public Object boardDelete(HttpServletRequest req, HttpServletResponse res);
+	public Object imageDownload(HttpServletRequest req, HttpServletResponse res);
+	public Object imageUpload(HttpServletRequest req, HttpServletResponse res);
+	public Object imageGet(HttpServletRequest req, HttpServletResponse res);
+}
+
+// ActionForward(pojo1) -> path변수: String, isRedirect: boolean - true면 sendredirect, false 이면 forward
+// String(pojo2) -> "redirect:board/boardList.gd3", "forward:/board/boardList.gd3, "/board/boardList.gd3"
+// Object(pojo3) -> String에서 Object로 변경한 이유가 뭐지? - ModelAndView, 또는 상위버전 Model(스프링에서 UI지원하기 위해 제공되는 클래스)\
+// -> ModelAndView -> select -> 유지 -> forward -> 유효범위:request

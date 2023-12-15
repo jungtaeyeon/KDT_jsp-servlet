@@ -1,0 +1,17 @@
+package com.example.demo.pojo3;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Board2Controller implements Controller3 {
+
+	@Override
+	public Object execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,6 +1,8 @@
 INDEX VERSION 1.134
 /Users/jeongtaeyeon/workspace_jsp2/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2649928151.index
 /nae2Gym/src/main/java
+/Users/jeongtaeyeon/workspace_jsp2/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/12910485.index
+/nae2Gym/src/main/java
 /Users/jeongtaeyeon/workspace_jsp2/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/849051814.index
 /nae2Gym/src/main/java
 /Users/jeongtaeyeon/workspace_jsp2/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3137111618.index

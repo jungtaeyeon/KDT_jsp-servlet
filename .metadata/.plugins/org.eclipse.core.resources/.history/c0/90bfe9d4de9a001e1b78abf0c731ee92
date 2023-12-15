@@ -1,0 +1,16 @@
+package com.example.demo.pojo3;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public interface Controller3 {
+	public Object execute(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException;
+}
+
+// ActionForward(pojo1) -> path변수: String, isRedirect: boolean - true면 sendredirect, false 이면 forward
+// String(pojo2) -> "redirect:board/boardList.gd3", "forward:/board/boardList.gd3, "/board/boardList.gd3"
+// Object(pojo3) -> 

@@ -1,0 +1,47 @@
+package com.example.demo.pojo3;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+
+
+public class Board2Logic {
+	Logger logger = Logger.getLogger(Board2Logic.class);
+	Board2Dao bDao = new Board2Dao();
+	public List<Map<String, Object>> boardList(Map<String, Object> pMap) {
+		logger.info("boardList");
+		// 웹개발에서는 NullPointerException이 발동하면 화면 자체가 안열림 -막막함
+		// 어떤 힌트를 보고 문제를 예측해서 하나씩 가능성을 제거해 나가는 과정을 통해서 트러블 슈팅을 완성함
+		List<Map<String, Object>> bList = new ArrayList<>(); // NullPointerException방어코드로 ArrayList 넣어놓기
+		bList = bDao.boardList(pMap);
+		return bList;
+	}
+
+	public int boardInsert(Map<String, Object> pMap) {
+		logger.info("boardInsert");
+		int result = 0;
+		result = bDao.boardInsert(pMap);
+		return result;
+	}
+
+	public int boardUpdate(Map<String, Object> pMap) {
+		logger.info("boardUpdate");
+		int result = 0;
+		result = bDao.boardUpdate(pMap);
+		return result;
+	}
+
+	public int boardDelete(Map<String, Object> pMap) {
+		logger.info("boardDelete");
+		int result = 0;
+		result = bDao.boardDelete(pMap);
+		return result;
+	}
+
+	public List<Map<String, Object>> boardDetail(Map<String, Object> pMap) {
+		
+		return null;
+	}
+}

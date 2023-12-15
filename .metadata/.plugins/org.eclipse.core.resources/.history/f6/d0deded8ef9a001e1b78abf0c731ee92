@@ -1,0 +1,12 @@
+package com.example.demo.pojo3;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+import org.apache.log4j.Logger;
+
+@SuppressWarnings("serial")
+@WebServlet("*.gd3")
+public class ActionSupport extends HttpServlet {
+	Logger logger = Logger.getLogger(ActionSupport.class);
+}

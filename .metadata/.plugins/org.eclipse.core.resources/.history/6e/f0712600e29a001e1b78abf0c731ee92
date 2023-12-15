@@ -1,0 +1,9 @@
+package com.example.demo.pojo3;
+
+import javax.servlet.http.HttpServletRequest;
+
+// -> select -> List:배열-로우 <Map:여러컬럼담기> -> jsp -> 유지 -> request -> 서블릿과 의존관계가 있다.
+// -> 서블릿으로부터 완전한 독립이 안되었다 -> 불만 -> spring5.0등장
+public class ModelAndView {
+	HttpServletRequest req = null;
+}
